@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Diary.Models.DayStory>
+
+    @foreach (var item in Model) {
+        if (item.Category == "main") {
+            var itemId = @Html.DisplayFor(model => item.Day);
+            var divId = "content" + itemId;
+                <div class="selectorClass linkBox boxStyle"><span class="sImg"><img src="@Html.DisplayFor(model => item.Img)" class="tinyImg rounded-corners5" alt="" /></span> <span class="sDate">@Html.DisplayFor(model => item.Day)</span><span class="sHeader">, @Html.DisplayFor(model => item.Header)</span></div>
+                <div class="subContent rounded-corners10 mainwrapper" style="display:none;"></div>
+        }
+    }

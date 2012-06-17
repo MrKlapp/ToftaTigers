@@ -1,0 +1,383 @@
+﻿@model Diary.Models.DayStory
+@{
+    ViewBag.Title = "Upload";
+    
+    var item = Model;
+    var day = @Html.DisplayFor(model => item.Day);
+    var category = @Html.DisplayFor(model => item.Category);
+    var imgPath = "/Upload/"+category+"/"+day+"/thumbnails/";
+}
+<script src="@Url.Content("~/Content/Scripts/swfupload/swfupload.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/Scripts/swfupload/handlers.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Content/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+<style type="text/css">
+    #img-list {
+	    padding: 0;
+	    list-style: none;
+	    margin: 0;
+    }
+
+    #img-upload-div {
+        width: 400px;
+    }
+
+    #img-list .file-invalid {
+	    cursor: pointer;
+	    color: #514721;
+	    padding-left: 48px;
+	    line-height: 24px;
+	    background: url(/Content/Scripts/fancyupload/assets/error.png) no-repeat 24px 5px;
+	    margin-bottom: 1px;
+    }
+    #img-list .file-invalid span {
+	    background-color: #fff6bf;
+	    padding: 1px;
+    }
+
+    #img-list .file {
+	    line-height: 2em;
+	    padding-left: 22px;
+	    /*background: url(../Scripts/fancyupload/assets/attach.png) no-repeat 1px 50%;*/
+    }
+
+    #img-list .file span,
+    #img-list .file a {
+	    padding: 0 4px;
+    }
+
+    #img-list .file .file-size {
+	    color: #666;
+    }
+
+    #img-list .file .file-error {
+	    color: #8a1f11;
+    }
+
+    #img-list .file .file-progress {
+	    width: 125px;
+	    height: 12px;
+	    vertical-align: middle;
+	    background-image: url(/Content/Scripts/fancyupload/assets/progress-bar/progress.gif);
+    }
+
+
+#btnSubmit { margin: 0 0 0 155px ; }
+
+/* -- Table Styles ------------------------------- */
+td {
+	font: 10pt Helvetica, Arial, sans-serif;
+	vertical-align: top;
+}
+
+.progressWrapper {
+	width: 357px;
+	overflow: hidden;
+}
+
+.progressContainer {
+	margin: 5px;
+	padding: 4px;
+	border: solid 1px #E8E8E8;
+	background-color: #F7F7F7;
+	overflow: hidden;
+}
+/* Message */
+.message {
+	margin: 1em 0;
+	padding: 10px 20px;
+	border: solid 1px #FFDD99;
+	background-color: #FFFFCC;
+	overflow: hidden;
+}
+/* Error */
+.red {
+	border: solid 1px #B50000;
+	background-color: #FFEBEB;
+}
+
+/* Current */
+.green {
+	border: solid 1px #DDF0DD;
+	background-color: #EBFFEB;
+}
+
+/* Complete */
+.blue {
+	border: solid 1px #CEE2F2;
+	background-color: #F0F5FF;
+}
+
+.progressName {
+	font-size: 8pt;
+	font-weight: 700;
+	color: #555;
+	width: 323px;
+	height: 14px;
+	text-align: left;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.progressBarInProgress,
+.progressBarComplete,
+.progressBarError {
+	font-size: 0;
+	width: 0%;
+	height: 2px;
+	background-color: blue;
+	margin-top: 2px;
+}
+
+.progressBarComplete {
+	width: 100%;
+	background-color: green;
+	visibility: hidden;
+}
+
+.progressBarError {
+	width: 100%;
+	background-color: red;
+	visibility: hidden;
+}
+
+.progressBarStatus {
+	margin-top: 2px;
+	width: 337px;
+	font-size: 7pt;
+	font-family: Arial;
+	text-align: left;
+	white-space: nowrap;
+}
+
+a.progressCancel {
+	font-size: 0;
+	display: block;
+	height: 14px;
+	width: 14px;
+	background-image: url(/Content/images/cancelbutton.png);
+	background-repeat: no-repeat;
+	background-position: -14px 0px;
+	float: right;
+}
+
+a.progressCancel:hover {
+	background-position: 0px 0px;
+}
+
+
+/* -- SWFUpload Object Styles ------------------------------- */
+.swfupload {
+	vertical-align: top;
+}
+
+
+#btnSubmit { margin: 0 0 0 155px ; }
+
+/* -- Table Styles ------------------------------- */
+td {
+	font: 10pt Helvetica, Arial, sans-serif;
+	vertical-align: top;
+}
+
+.progressWrapper {
+	width: 357px;
+	overflow: hidden;
+}
+
+.progressContainer {
+	margin: 5px;
+	padding: 4px;
+	border: solid 1px #E8E8E8;
+	background-color: #F7F7F7;
+	overflow: hidden;
+}
+/* Message */
+.message {
+	margin: 1em 0;
+	padding: 10px 20px;
+	border: solid 1px #FFDD99;
+	background-color: #FFFFCC;
+	overflow: hidden;
+}
+/* Error */
+.red {
+	border: solid 1px #B50000;
+	background-color: #FFEBEB;
+}
+
+/* Current */
+.green {
+	border: solid 1px #DDF0DD;
+	background-color: #EBFFEB;
+}
+
+/* Complete */
+.blue {
+	border: solid 1px #CEE2F2;
+	background-color: #F0F5FF;
+}
+
+.progressName {
+	font-size: 8pt;
+	font-weight: 700;
+	color: #555;
+	width: 323px;
+	height: 14px;
+	text-align: left;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.progressBarInProgress,
+.progressBarComplete,
+.progressBarError {
+	font-size: 0;
+	width: 0%;
+	height: 2px;
+	background-color: blue;
+	margin-top: 2px;
+}
+
+.progressBarComplete {
+	width: 100%;
+	background-color: green;
+	visibility: hidden;
+}
+
+.progressBarError {
+	width: 100%;
+	background-color: red;
+	visibility: hidden;
+}
+
+.progressBarStatus {
+	margin-top: 2px;
+	width: 337px;
+	font-size: 7pt;
+	font-family: Arial;
+	text-align: left;
+	white-space: nowrap;
+}
+
+a.progressCancel {
+	font-size: 0;
+	display: block;
+	height: 14px;
+	width: 14px;
+	background-image: url(/Content/images/cancelbutton.png);
+	background-repeat: no-repeat;
+	background-position: -14px 0px;
+	float: right;
+}
+
+a.progressCancel:hover {
+	background-position: 0px 0px;
+}
+
+
+/* -- SWFUpload Object Styles ------------------------------- */
+.swfupload {
+	vertical-align: top;
+}
+
+</style>
+
+<script type="text/javascript">
+
+    var swfu;
+    window.onload = function () {
+        swfu = new SWFUpload({
+            // Backend Settings
+            upload_url: "/Upload/UploadFile/",
+            post_params: {
+                "ASPSESSID": "@Session.SessionID",
+                "category": "@category",
+                "day": "@day"
+            },
+
+            // File Upload Settings
+            file_size_limit: "5 MB",
+            file_types: "*.jpg",
+            file_types_description: "JPG Images",
+            file_upload_limit: "0",    // Zero means unlimited
+
+            // Event Handler Settings - these functions as defined in Handlers.js
+            //  The handlers are not part of SWFUpload but are part of my website and control how
+            //  my website reacts to the SWFUpload events.
+            file_queue_error_handler: fileQueueError,
+            file_dialog_complete_handler: fileDialogComplete,
+            upload_progress_handler: uploadProgress,
+            upload_error_handler: uploadError,
+            upload_success_handler: uploadSuccess,
+            upload_complete_handler: uploadComplete,
+
+            // Button settings
+            button_image_url: "/Content/Images/XPButtonNoText_160x22.png",
+            button_placeholder_id: "spanButtonPlaceholder",
+            button_width: 160,
+            button_height: 22,
+            button_text: '<span class="button">Select Images <span class="buttonSmall">(4 MB Max)</span></span>',
+            button_text_style: '.button { font-family: Helvetica, Arial, sans-serif; font-size: 14pt; } .buttonSmall { font-size: 10pt; }',
+            button_text_top_padding: 1,
+            button_text_left_padding: 5,
+
+            // Flash Settings
+            flash_url: "/Content/Scripts/swfupload/swfupload.swf", // Relative to this file
+
+            custom_settings: {
+                upload_target: "divFileProgressContainer"
+            },
+
+            // Debug Settings
+            debug: false
+        });
+    };
+
+
+    function Delete(id, cat, day) {
+        if (confirm("Delete this?")) {
+            $.post('/Upload/DeleteDay/', { day: day, name: id, category: cat }, function (data) {
+                $("#" + id).hide("slow");
+            });
+        }
+        else {
+            return false;
+        }
+    }
+
+</script>
+<div id="swfu_container" style="margin: 20px 10px 0px 20px;text-align:left;">
+		    <div>
+				<span id="spanButtonPlaceholder"></span> <strong>@item.Day</strong>
+		    </div>
+		    <div id="divFileProgressContainer" style="height: 30px;"></div>
+		    <div id="thumbnails"></div>
+	    </div>
+<hr />
+    <div class="images details mainContent">
+         <form class="form-stacked" method="post" id="form"  action="/Upload/SaveComments/@item.Category/@item.Day">
+         <a href="/Home/UploadEdit/@item.Category/@item.Day" class="btn btn-info" id="reload">Efter uppladdning av bilder, klicka här för att ladda om sida</a>
+         
+         <br /><br />
+            <strong>Uppladdade bilder</strong><br />
+                @if (item != null && item.Images != null)
+                {    
+                    foreach (var img in item.Images)
+                     {
+                        <div style="display:inline-block;" id="@Html.DisplayFor(modelItem => img.Name)" >
+                            <img src="@Html.DisplayFor(modelItem => img.Thumb)" alt="@Html.DisplayFor(modelItem => img.Comment)" title="@Html.DisplayFor(modelItem => img.Comment)" class="thumb rounded-corners10" />
+                            <img src="/Content/Images/DeleteRed.png" alt="Delete" style="cursor:pointer;" onclick="Delete('@img.Name', '@item.Category', '@item.Day');" /><br />
+                            <input type="text" value="@Html.DisplayFor(modelItem => img.Comment)" class="input-medium" name="@Html.DisplayFor(modelItem => img.Name)" />
+                        </div>
+                     }
+                }
+                <br />                
+         <button class="btn btn-info">Spara kommentarer</button> <a href="/Home/Adm/" class="btn btn-info">Vidare --></a>
+         <input type="hidden" id="day" value="@day" />
+         <input type="hidden" id="category" value="@category" />
+         <input type="hidden" id="src" value="/Home/UploadEdit/@item.Category/@item.Day" />
+        </form>
+    </div>
+    <div id="delete"></div>
+
+

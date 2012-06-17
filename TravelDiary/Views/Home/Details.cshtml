@@ -1,0 +1,60 @@
+﻿@model Diary.Models.DayStory
+@{
+    ViewBag.Title = "Details";
+    Layout = null;
+    
+    var item = Model;
+    var day = @Html.DisplayFor(model => item.Day);
+}
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $("a.imgGallery").fancybox();
+
+        //clear form on focus
+        var el = $('input[type=text], textarea');
+        el.focus(function (e) {
+            if (e.target.value == e.target.defaultValue)
+                e.target.value = '';
+        });
+        el.blur(function (e) {
+            if (e.target.value == '')
+                e.target.value = e.target.defaultValue;
+        });
+
+    });
+</script>
+        <p class="details">
+            @Html.Raw(HttpUtility.HtmlDecode(item.Text))
+        </p>
+
+        <div class="images details">
+            @foreach (var img in item.Images)
+            { 
+                <a href="@Html.DisplayFor(modelItem => img.Url)" class="imgGallery" title="@Html.DisplayFor(modelItem => img.Comment)" rel="gal">
+                    <img src="@Html.DisplayFor(modelItem => img.Thumb)" alt="@Html.DisplayFor(modelItem => img.Comment)" title="@Html.DisplayFor(modelItem => img.Comment)" class="thumb rounded-corners10" /></a>
+            }
+        </div>
+        <p></p>
+        
+            @foreach (var cmt in item.Comments)
+            { 
+                <div class="comments subContent rounded-corners5 details">                    
+                    @Html.Raw(HttpUtility.HtmlDecode(cmt.Text))            
+                    @Html.DisplayFor(modelItem => cmt.DateStamp)
+                </div>        
+            }
+              <form class="form-stacked" method="post" action="/Home/ReplySave/@item.Category/@item.Day">
+                <div class="content-addcomment"> 
+                        <table>
+                            <tr>
+                                <td colspan="2"><div class="clearfix"><div class="input"><textarea name="comment" style="min-height:30px;width:300px;" rows="1" cols="5" id="comment">Skriv kommentar...</textarea></div></div></td>
+                            </tr>
+                            <tr>
+                                <td style="vertical-align:text-top;"><div class="clearfix" style="float:left;"><input type="text" value="Ditt namn..." name="from" id="from" /></div>
+                                <div class="actions"><button class="btn">Spara</button></div>
+                                <input type="hidden" name="day" value="@item.Day" /><input type="hidden" name="category" value="@item.Category" /></td>
+                            </tr>
+                        </table>
+                </div>
+              </form>

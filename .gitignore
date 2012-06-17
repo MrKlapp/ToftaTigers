@@ -1,0 +1,56 @@
+#Ignore binary files
+*.7[Zz]
+*.[Zz][Ii][pP]
+*.[Rr][Aa][Rr]
+*.[Xx][Ll][Ss]
+*.[Xx][Ll][Ss][Xx]
+*.[Dd][Oo][Cc]
+*.[Pp][Dd][Ff]
+*.[Pp][Nn][Gg]
+*.[Bb][Mm][Pp]
+*.[Tt][Ii][Ff]
+#Ignore potentially big files
+*.[Cc][Ss][Vv]
+#Ignore Windows Crap
+Thumbs.db
+*.lnk
+#Ignore files build by Visual Studio (non source)
+*.obj
+*.[Ee][Xx][Ee]
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+[Bb]in
+[Dd]ebug*/
+*.lib
+*.sbr
+obj
+[Rr]elease*/obj
+bin
+deploy
+deploy/*
+_ReSharper.*
+*ReSharper.*
+*.csproj.user
+*.[Rr]esharper.user
+*.[Rr]esharper
+*.suo
+*.cache
+~$*
+.hg
+.hg/*
+[Tt]est[Rr]esult*
+# From GUI
+Upload*/

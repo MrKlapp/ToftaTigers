@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Diary.Models.DayStory>
+
+@{
+    ViewBag.Title = "Admin";
+    int counter = 1;
+    string boxStyle;
+}
+
+<script language="javascript" type="text/javascript">
+
+    function Delete(id, category) {
+        if (confirm("Delete this?")) {
+            $.post('/Day/Delete/' + category + "/" + id, function (data) {
+                $("#" + id).hide("slow");
+            });
+        }
+        else {
+            return false;
+        }
+    }
+
+</script>
+
+
+<div class="row-fluid show-grid"><br />
+<div style="text-align:left;padding-left:20px;margin-left:20px;"><a href="/Home/Day" class="btn btn-info" id="reload">Skapa ny post/dag</a> <a href="/Home/Index" class="btn btn-info">Till startsida</a></div> 
+    <div class="span7 mainContent">
+        @foreach (var item in Model) {
+            if (item.Category == "main") { 
+                boxStyle = "selectorClass linkBox boxStyle";
+            }
+            else {
+                boxStyle = "selectorClass linkBox boxStyle2";
+            }
+            var divId = "content" + @counter;
+            var itemId = @Html.DisplayFor(model => item.Day);
+                <div class="@boxStyle" style="padding-left:20px;margin-left:20px;" id="@Html.DisplayFor(model => item.Day)">
+                    <table width="100%">
+                        <tr>
+                            <td align="left" style="padding-left:60px;margin-left:60px;text-align:left;">
+                                <span class="sImg"><img src="@Html.DisplayFor(model => item.Img)" class="tinyImg rounded-corners5" alt="" style="vertical-align:middle" /></span> 
+                                <span class="sDate">@Html.DisplayFor(model => item.Day)</span>
+                                <span class="sHeader">, @Html.DisplayFor(model => item.Header)</span>
+                            </td>
+                            <td align="right">
+                                <div style="text-align:right;padding-right:20px;margin-right:20px;">
+                                    <a href="/Home/UploadEdit/@item.Category/@item.Day" style="padding-right:10px;"><img src="../../Content/Images/camera.png" alt="Bilder" style="cursor:pointer;" border="0"/></a>
+                                    <a href="/Home/DayEdit/@item.Category/@item.Day" style="padding-right:10px;"><img src="../../Content/Images/edit.png" alt="Ändra/Redigera" style="cursor:pointer;" border="0"/></a>
+                                    <img src="/Content/Images/DeleteRed.png" alt="Radera" style="cursor:pointer;" onclick="Delete('@item.Day', '@item.Category');" />
+                                    <br />
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    
+                </div>
+               
+            counter ++;
+        }
+    </div>
+</div>
+

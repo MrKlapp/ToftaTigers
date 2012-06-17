@@ -1,0 +1,88 @@
+﻿
+@{
+   
+    int counter = 1;
+    int subcounter = 1;
+    //http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/stepping-out-with-bootstrap-from-twitter/
+}
+
+<script language="javascript" type="text/javascript">
+    $(document).ready(function () {
+        $('.linkBox').toggle(
+           function () {
+               var id = $(this).children(".id").val();
+               var dateId = $("#sDate" + id).html();
+               var tpe = $("#type" + id).val();
+               //$("#div" + id).show("fast");
+               $(this).next("div").show("fast");
+               $.post('/Home/Details/', { Date: dateId, Category: tpe }, function (data) {
+                   $('#content' + id).html(data);
+               });
+           }, function () {
+               //$("#div" + id).hide("slow");
+               $(this).next("div").hide("slow");
+           });
+
+
+        $('.selectorClass').hover(function () {
+            $(this).stop().fadeTo('fast', 0.4);
+        }, function () {
+            $(this).stop().fadeTo('slow', 1);
+        });
+
+
+        var col1 = $("input[name='main']:first").val();
+        var col2 = $("input[name='noel']:first").val();
+        showDiv(col1);
+        showDiv(col2);
+
+        function showDiv(id) {
+            var dateId = $("#sDate" + id).html();
+            var tpe = $("#type" + id).val();
+            //$("#div" + id).show("fast");
+            $.post('/Home/Details/', { Date: dateId, Category: tpe }, function (data) {
+                $('#content' + id).html(data);
+                $("#content" + id).show("fast");
+            });
+        }
+
+    });
+    
+</script>
+<div class="row-fluid show-grid">
+    <div class="span12 mainContent">
+    @{
+     var days = new Diary.Models.DayStory().GetAllDays("main");;
+      subcounter = 1;
+        }
+        @foreach (var item in days) {
+                var divId = "content" + @counter;
+                var typeId = "type" + @counter;
+                var dateId = "sDate" + @counter;
+                var rowNo = "rowNo" + subcounter;
+                var itemId = @item.Day;
+                    <div class="selectorClass linkBox @rowNo">
+                    <input type="hidden" class="id" name="main" value="@counter" />
+                    <input type="hidden" class="type" id="@typeId" value="main" />
+                     <table width="100%" border="0">
+                        <tr>
+                            <td align="left" width="100%" style="padding-left:5px;margin-left:5px;text-align:left;">
+                                <!-- <span class="sImg" style="vertical-align:bottom;"><img src="@item.Img" class="tinyImg rounded-corners5" alt="" style="vertical-align:middle;" /></span> -->
+                                <ul>
+                                    <li class="link">
+                                        <span id="@dateId" class="sDate">@Html.DisplayFor(model => item.Day)</span>, 
+                                        <span class="sHeader" style="padding-bottom:5px;"> @Html.DisplayFor(model => item.Header)</span>
+                                    </li>
+                                </ul>
+                            </td>
+                            <td align="right" style="padding-right:10px;margin-right:10px;text-align:right;"><!--<img src="../../Content/Images/ff.png" alt=">>" />--></td>
+                        </tr>
+                    </table>
+                    </div>
+                    
+                <div class="subContent rounded-corners10 mainwrapper" id="@divId" style="display:none;"></div>
+                counter ++;
+                subcounter ++;
+        }
+    </div>  
+</div>

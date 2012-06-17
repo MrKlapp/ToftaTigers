@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="C:\Users\magnusklappe.QS\Desktop\Td3" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="bin/RiaLibrary.Web.dll" publishTime="03/04/2012 10:30:30" />
+    <file relUrl="Views/Home/Day.cshtml" publishTime="03/12/2012 09:23:28" />
+    <file relUrl="Global.asax" publishTime="03/04/2012 21:55:23" />
+    <file relUrl="bin/EntityFramework.xml" publishTime="02/22/2012 13:47:21" />
+    <file relUrl="Views/_ViewStart.cshtml" publishTime="02/28/2012 20:33:39" />
+    <file relUrl="Content/fancybox/blank.gif" publishTime="03/03/2012 14:36:10" />
+    <file relUrl="Views/Shared/_DaysListContainer.cshtml" publishTime="03/08/2012 20:31:45" />
+    <file relUrl="Views/Home/Details.cshtml" publishTime="03/11/2012 00:10:05" />
+    <file relUrl="Views/Shared/Error.cshtml" publishTime="02/22/2012 13:47:06" />
+    <file relUrl="Views/Home/Adm.cshtml" publishTime="03/11/2012 16:01:07" />
+    <file relUrl="bin/System.Web.Helpers.dll" publishTime="02/22/2012 13:47:25" />
+    <file relUrl="bin/System.Web.WebPages.dll" publishTime="02/22/2012 13:47:25" />
+    <file relUrl="packages.config" publishTime="03/03/2012 21:19:41" />
+    <file relUrl="Views/Home/Index.cshtml" publishTime="03/11/2012 15:58:15" />
+    <file relUrl="bin/System.Web.Mvc.dll" publishTime="02/22/2012 13:47:29" />
+    <file relUrl="Content/fancybox/fancybox_buttons.png" publishTime="03/03/2012 14:36:10" />
+    <file relUrl="Views/Shared/_Layout.cshtml" publishTime="03/11/2012 16:14:00" />
+    <file relUrl="Views/Shared/_DayList.cshtml" publishTime="03/08/2012 20:34:20" />
+    <file relUrl="Views/Home/Upload.cshtml" publishTime="03/12/2012 09:08:26" />
+    <file relUrl="bin/System.Web.Razor.dll" publishTime="02/22/2012 13:47:25" />
+    <file relUrl="bin/TravelDiary.pdb" publishTime="03/29/2012 19:39:40" />
+    <file relUrl="bin/Microsoft.Web.Infrastructure.dll" publishTime="02/22/2012 13:47:23" />
+    <file relUrl="Web.config" publishTime="03/11/2012 12:51:53" />
+    <file relUrl="Index.aspx" publishTime="03/11/2012 10:50:16" />
+    <file relUrl="Content/Site.css" publishTime="03/05/2012 20:10:08" />
+    <file relUrl="bin/TravelDiary.dll" publishTime="03/29/2012 19:39:41" />
+    <file relUrl="bin/EntityFramework.dll" publishTime="02/22/2012 13:47:21" />
+    <file relUrl="Content/fancybox/fancybox_sprite.png" publishTime="03/03/2012 14:36:10" />
+    <file relUrl="bin/System.Web.Providers.dll" publishTime="02/22/2012 13:47:30" />
+    <file relUrl="bin/Microsoft.Web.Optimization.dll" publishTime="02/22/2012 13:47:30" />
+    <file relUrl="Content/fancybox/fancybox_loading.gif" publishTime="03/03/2012 14:36:10" />
+    <file relUrl="Views/Web.config" publishTime="02/22/2012 13:47:06" />
+    <file relUrl="bin/System.Web.WebPages.Razor.dll" publishTime="02/22/2012 13:47:25" />
+    <file relUrl="bin/System.Web.WebPages.Deployment.dll" publishTime="02/22/2012 13:47:25" />
+  </publishProfile>
+</publishData>
